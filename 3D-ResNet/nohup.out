@@ -1,0 +1,141 @@
+ucf_fromkin_ours_64fr_5scale_split3
+Namespace(annotation_path='/data2/ptokmako/ucfTrainTestlist/ucf101_03.json', arch='resnet-18', batch_size=128, begin_epoch=1, checkpoint=10, crop_position_in_test='c', dampening=0.9, dataset='ucf101', ft_begin_index=4, gpu=['0,1,8,9'], initial_scale=1.0, label_folder='', learning_rate=0.001, lr_patience=5, lr_threshold=0.0001, manual_seed=1, mean=[114.7748, 107.7354, 99.475], mean_dataset='activitynet', model='resnet', model_depth=18, momentum=0.9, n_classes=400, n_epochs=200, n_finetune_classes=101, n_scales=5, n_threads=8, n_val_samples=3, nesterov=False, no_cuda=False, no_hflip=False, no_mean_norm=False, no_softmax_in_test=False, no_train=False, no_val=False, norm_value=1, optimizer='sgd', pretrain_path='/data2/ptokmako/results/kinetics_64fr/save_200.pth', resnet_shortcut='B', result_path='/data2/ptokmako/results/ucf_fromkin_ours_64fr_5scale_split3', resume_path='', root_path='/root/data/ActivityNet', sample_duration=64, sample_size=112, scale_in_test=1.0, scale_step=0.84081289641525, scales=[1.0, 0.84081289641525, 0.706966326778202, 0.5944264048864302, 0.4998013871982635], shot=-1, std=[38.7568578, 37.88248729, 40.02898126], std_norm=False, temp_stride=1, test=False, test_subset='val', train_crop='random', video_path='/scratch/ptokmako/UCF_jpeg/', weight_decay=5e-05)
+loading pretrained model /data2/ptokmako/results/kinetics_64fr/save_200.pth
+freezing at 0
+freezing at 1
+freezing at 2
+freezing at 3
+DataParallel(
+  (module): ResNet(
+    (conv1): Conv3d(3, 64, kernel_size=(7, 7, 7), stride=(1, 2, 2), padding=(3, 3, 3), bias=False)
+    (bn1): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu): ReLU(inplace=True)
+    (maxpool): MaxPool3d(kernel_size=(3, 3, 3), stride=2, padding=1, dilation=1, ceil_mode=False)
+    (layer1): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+        (bn1): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+        (bn2): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+      (1): BasicBlock(
+        (conv1): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+        (bn1): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+        (bn2): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (layer2): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv3d(64, 128, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1), bias=False)
+        (bn1): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv3d(128, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+        (bn2): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (downsample): Sequential(
+          (0): Conv3d(64, 128, kernel_size=(1, 1, 1), stride=(2, 2, 2), bias=False)
+          (1): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): BasicBlock(
+        (conv1): Conv3d(128, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+        (bn1): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv3d(128, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+        (bn2): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (layer3): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv3d(128, 256, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1), bias=False)
+        (bn1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+        (bn2): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (downsample): Sequential(
+          (0): Conv3d(128, 256, kernel_size=(1, 1, 1), stride=(2, 2, 2), bias=False)
+          (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): BasicBlock(
+        (conv1): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+        (bn1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+        (bn2): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (layer4): Sequential(
+      (0): BasicBlock(
+        (conv1): Conv3d(256, 512, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1), bias=False)
+        (bn1): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv3d(512, 512, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+        (bn2): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (downsample): Sequential(
+          (0): Conv3d(256, 512, kernel_size=(1, 1, 1), stride=(2, 2, 2), bias=False)
+          (1): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): BasicBlock(
+        (conv1): Conv3d(512, 512, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+        (bn1): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (conv2): Conv3d(512, 512, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+        (bn2): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (avgpool): AvgPool3d(kernel_size=(4, 4, 4), stride=1, padding=0)
+    (fc): Linear(in_features=512, out_features=101, bias=True)
+  )
+)
+dataset loading [0/9624]
+dataset loading [1000/9624]
+dataset loading [2000/9624]
+dataset loading [3000/9624]
+dataset loading [4000/9624]
+dataset loading [5000/9624]
+dataset loading [6000/9624]
+dataset loading [7000/9624]
+dataset loading [8000/9624]
+dataset loading [9000/9624]
+9624
+dataset loading [0/3696]
+dataset loading [1000/3696]
+dataset loading [2000/3696]
+dataset loading [3000/3696]
+3791
+run
+train at epoch 1
+THCudaCheck FAIL file=/opt/conda/conda-bld/pytorch_1573049301898/work/aten/src/THC/THCCachingHostAllocator.cpp line=278 error=2 : out of memory
+Traceback (most recent call last):
+  File "main.py", line 169, in <module>
+    train_logger, train_batch_logger, writer)
+  File "/home/ptokmako/src/video_cluster/3D-ResNet/train.py", line 36, in train_epoch
+    outputs = model(inputs.cuda())
+  File "/home/ptokmako/miniconda2/envs/tubercnn/lib/python3.6/site-packages/torch/nn/modules/module.py", line 541, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/ptokmako/miniconda2/envs/tubercnn/lib/python3.6/site-packages/torch/nn/parallel/data_parallel.py", line 152, in forward
+    outputs = self.parallel_apply(replicas, inputs, kwargs)
+  File "/home/ptokmako/miniconda2/envs/tubercnn/lib/python3.6/site-packages/torch/nn/parallel/data_parallel.py", line 162, in parallel_apply
+    return parallel_apply(replicas, inputs, kwargs, self.device_ids[:len(replicas)])
+  File "/home/ptokmako/miniconda2/envs/tubercnn/lib/python3.6/site-packages/torch/nn/parallel/parallel_apply.py", line 85, in parallel_apply
+    output.reraise()
+  File "/home/ptokmako/miniconda2/envs/tubercnn/lib/python3.6/site-packages/torch/_utils.py", line 385, in reraise
+    raise self.exc_type(msg)
+RuntimeError: Caught RuntimeError in replica 0 on device 0.
+Original Traceback (most recent call last):
+  File "/home/ptokmako/miniconda2/envs/tubercnn/lib/python3.6/site-packages/torch/nn/parallel/parallel_apply.py", line 60, in _worker
+    output = module(*input, **kwargs)
+  File "/home/ptokmako/miniconda2/envs/tubercnn/lib/python3.6/site-packages/torch/nn/modules/module.py", line 541, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/ptokmako/src/video_cluster/3D-ResNet/models/resnet.py", line 195, in forward
+    x = self.conv1(x)
+  File "/home/ptokmako/miniconda2/envs/tubercnn/lib/python3.6/site-packages/torch/nn/modules/module.py", line 541, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/ptokmako/miniconda2/envs/tubercnn/lib/python3.6/site-packages/torch/nn/modules/conv.py", line 480, in forward
+    self.padding, self.dilation, self.groups)
+RuntimeError: CUDA error: invalid argument
+
