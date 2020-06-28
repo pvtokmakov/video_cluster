@@ -18,7 +18,7 @@ The codebased is built upon Local Aggregation (https://github.com/neuroailab/Loc
 ## Unsupervised representation learning
 
 ### Dataset preprocessing
-Training is done on the Kinetics-400 dataset (https://github.com/activitynet/ActivityNet/tree/master/Crawler/Kinetics). Download it and preprocess as follows.
+Training is done on the [Kinetics-400 datase](https://github.com/activitynet/ActivityNet/tree/master/Crawler/Kinetics). Download it and preprocess as follows.
 ```
 cd 3D-ResNet
 ```
