@@ -70,7 +70,7 @@ CUDA_VISIBLE_DEVICES=0,1,2 python scripts/localagg.py ./config/kinetics_la_tune.
 ### Recomputing and clustering IDT descriptors
 We provide precomputed Fisher vector-encoded IDT descriptors for the Kinetics dataset under this [link](https://drive.google.com/file/d/1I5ZWlYJfFxXhPrv6gRq1jZJah85usd1H/view?usp=sharing).
 
-If you wish to recompute them, you will need to first download and install the original IDT implementation (https://lear.inrialpes.fr/people/wang/improved_trajectories).
+If you wish to recompute them, you will need to first download and install the original [IDT implementation](https://lear.inrialpes.fr/people/wang/improved_trajectories).
 This codes takes person detections as input. You can download the detections we used [here](https://drive.google.com/file/d/1CDX8qkhsx9ygL27VG8UQpzAipa3MeHPu/view?usp=sharing).
 
 Next, estimate the model (PCA, GMM) parameters used in Fisher vector encoding. To this end, first sample 3500 videos from Kinetics at random, and compute IDTs for them, using the script bellow (don't forget to update paths to the IDT implementation).
@@ -99,7 +99,7 @@ cd 3D-ResNet
 ```
 
 ### Dataset preprocessing
-Download and pre-process UCF101 (http://crcv.ucf.edu/data/UCF101.php) and HMDB51 (http://serre-lab.clps.brown.edu/resource/hmdb-a-large-human-motion-database/) datasets as follows.
+Download and pre-process [UCF101](http://crcv.ucf.edu/data/UCF101.php) and [HMDB51](http://serre-lab.clps.brown.edu/resource/hmdb-a-large-human-motion-database/) datasets as follows.
 
 ```bash
 python utils/video_jpg_ucf101_hmdb51.py AVI_VIDEO_DIRECTORY JPG_VIDEO_DIRECTORY
@@ -118,7 +118,7 @@ python utils/ucf101_json.py ANNOTATION_DIR_PATH
 python utils/hmdb51_json.py ANNOTATION_DIR_PATH
 ```
 
-###Finetuning
+### Finetuning
 On UCF101:
 ```bash
 python main.py --video_path PATH_TO_FRAMES --annotation_path PATH_TO_ANNOTATION --result_path OUTPUT_MODEL_PATH --dataset ucf101 --n_finetune_classes 101 --model resnet --model_depth 18 --resnet_shortcut B --batch_size 128 --n_threads 16 --gpu 0 --pretrain_path PATH_TO_PRETRAINED_MODEL  --checkpoint 10 --ft_begin_index 2 --n_epochs 40 --lr_patience 5  --n_scales 2 --train_crop random
@@ -129,7 +129,7 @@ On HMDB51:
 python main.py --video_path PATH_TO_FRAMES --annotation_path PATH_TO_ANNOTATION --result_path OUTPUT_MODEL_PATH --dataset hmdb51 --n_finetune_classes 101 --model resnet --model_depth 18 --resnet_shortcut B --batch_size 128 --n_threads 16 --gpu 0 --pretrain_path PATH_TO_PRETRAINED_MODEL  --checkpoint 10 --ft_begin_index 3 --n_epochs 30 --lr_patience 5  --n_scales 2 --train_crop random
 ```
 
-###Evaluation
+### Evaluation
 On UCF101:
 ```bash
 python main.py --video_path PATH_TO_FRAMES --annotation_path PATH_TO_ANNOTATION --dataset ucf101 --n_classes 101 --model resnet --model_depth 18 --resnet_shortcut B --batch_size 128 --n_threads 16 --gpu 0 --test --no_train --no_val --resume_path OUTPUT_MODEL_PATH/save_40.pth
