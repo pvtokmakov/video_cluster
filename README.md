@@ -1,6 +1,6 @@
 # Unsupervised Learning of Video Representations via Dense Trajectory Clustering
 
-This is an implementation of the Unsupervised Learning of Video Representations via Dense Trajectory Clustering algorithm.
+This is an implementation of the [Unsupervised Learning of Video Representations via Dense Trajectory Clustering](https://arxiv.org/abs/2006.15731) algorithm.
 
 The codebased is built upon [Local Aggregation](https://github.com/neuroailab/LocalAggregation-Pytorch) and [3D ResNet](https://github.com/kenshohara/3D-ResNets-PyTorch).  
 
